@@ -1,5 +1,5 @@
 #include"libOne.h"
-
+//カプセル化…関数全体をclassで囲む
 class CHARACTER {//structとclassの違い,デフォルトがprivateかpublicか
     //禁止
 private:
