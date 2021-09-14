@@ -2,7 +2,7 @@
 //カプセル化…関数全体をclassで囲む
 class CHARACTER {//structとclassの違い,デフォルトがprivateかpublicか
     //禁止
-private:
+protected:
     int Img = 0;//画像表示
     float Px = 0, Py = 0, Angle = 0;//位置
     float Vx = 0, Vy = 0, AngSpeed = 0;//画像を動かす
@@ -19,7 +19,7 @@ public:
         Vy = 1;
         AngSpeed = 0.01f;
     }
-    void move() {
+    virtual void move() { //仮想関数
         Angle += AngSpeed;
     }
     void draw() {
@@ -28,17 +28,56 @@ public:
     }
 };
 
+class PLAYER :public CHARACTER {//継承 継承されるクラスを基底クラスと呼ぶ　baseclass
+public:                              //継承したクラスを派生クラスと呼ぶ　　derived class
+    void move() {
+        Px += Vx;
+    }
+};
+
+class ENEMY :public CHARACTER {
+public:                             
+    void move() {
+        Py += Vy;
+    }
+};
+
+class ENEMY_BULLET :public CHARACTER {
+};
+
+
+
 void gmain() {
     window(1920, 1080, full);
     int playerImg = loadImage("assets\\player.png");
+    int enemyImg = loadImage("assets\\enemy.png");
+    int enemyBulletImg = loadImage("assets\\eBullet.png");
 
-    CHARACTER chara;
+    PLAYER player;
+    ENEMY enemy;
+    ENEMY_BULLET eBullet;
 
-    chara.setImage(playerImg);
-    chara.init();
+    player.setImage(playerImg);
+    enemy.setImage(enemyImg);
+    eBullet.setImage(enemyBulletImg);
+
+    const int num = 3;
+    CHARACTER* chara[num];
+    chara[0] = &player;//多態性
+    chara[1] = &enemy;
+    chara[2] = &eBullet;
+
+    for (int i = 0; i < 2; i++) {
+        chara[i]->init();
+    }
     while (notQuit) {
-        chara.move();
+
+        for (int i = 0; i < 2; i++) {
+            chara[i]->move();
+        }
         clear();
-        chara.draw();
+        for (int i = 0; i < 2; i++) {
+            chara[i]->draw();
+        }
     }
 }
