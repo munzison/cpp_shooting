@@ -72,7 +72,7 @@ void gmain() {
     }
     while (notQuit) {
 
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < num; i++) { 
             chara[i]->move();
         }
         clear();
