@@ -67,16 +67,16 @@ void gmain() {
     chara[1] = &enemy;
     chara[2] = &eBullet;
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < num; i++) {
         chara[i]->init();
     }
     while (notQuit) {
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < num; i++) {
             chara[i]->move();
         }
         clear();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < num; i++) {
             chara[i]->draw();
         }
     }
