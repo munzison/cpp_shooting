@@ -1,3 +1,5 @@
+#define c2
+#ifdef c1
 #include"libOne.h"
 //カプセル化…関数全体をclassで囲む
 class CHARACTER {//structとclassの違い,デフォルトがprivateかpublicか
@@ -81,3 +83,50 @@ void gmain() {
         }
     }
 }
+
+#endif
+
+#ifdef c2
+#include"libOne.h"
+class ENEMY {
+private:
+    int Img;
+    float Px, Py, Vx;
+public:
+    void setImage(int img) {
+        Img = img;
+    }
+    void init() {
+        Px = random() % (int)width;
+        Py = random() % (int)height;
+        Vx = random() % 5 + 1.0f;
+
+    }
+    void move() {
+        Px += Vx;
+    }
+    void draw() {
+        image(Img, Px, Py);
+    }
+};
+void gmain() {
+    window(1920, 1080, full);
+    hideCursor();
+    int enemyImg = loadImage("assets\\enemy.png");
+    int num = 50;
+    ENEMY* enemy = new ENEMY[num];
+    for (int i = 0; i < num; i++) {
+        enemy[i].setImage(enemyImg);
+        enemy[i].init();
+    }
+    while (notQuit) {
+        clear();
+        for (int i = 0; i < num; i++) {
+            enemy[i].move();
+            enemy[i].draw();
+        }
+    }
+    delete[] enemy;
+}
+
+#endif
