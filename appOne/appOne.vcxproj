@@ -153,12 +153,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="gmain.cpp" />
+    <ClCompile Include="TAKO.cpp" />
+    <ClCompile Include="TAKO_C4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TAKO.h" />
+    <ClInclude Include="TAKO_C4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

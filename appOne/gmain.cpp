@@ -1,4 +1,4 @@
-#define c2
+#define c4
 #ifdef c1
 #include"libOne.h"
 //カプセル化…関数全体をclassで囲む
@@ -128,5 +128,60 @@ void gmain() {
     }
     delete[] enemy;
 }
+#endif
 
+
+#ifdef c3
+#include"libOne.h"
+class BABY {
+public:
+    //コンストラクタ
+    BABY() {
+        textSize(200);
+        text("Hello", 700, 300);
+    }
+    //デストラクタ
+    ~BABY() {
+        textSize(200);
+        text("GoodBye", 700, 600);
+    }
+};
+void func() {
+    BABY baby;
+
+}
+void gmain() {
+    window(1920, 1080, full);
+    BABY* baby = new BABY;
+    delete baby;
+    while (notQuit) {
+
+    }
+
+}
+
+#endif
+
+
+#ifdef c4
+#include"libOne.h"
+#include "TAKO_C4.h"
+
+void gmain() {
+    window(1920, 1080, full);
+    int takoImg = loadImage("assets\\enemy.png");
+    int num = 30;
+    TAKO_C4* takos = new TAKO_C4[num];
+    for (int i = 0; i < num; i++) {
+        takos[i].setImage(takoImg);
+        takos[i].init();
+    }
+    while (notQuit) {
+        for (int i = 0; i < num; i++) {
+            takos[i].move();
+            takos[i].draw();
+        }
+    }
+    delete[] takos;
+}
 #endif
