@@ -165,23 +165,50 @@ void gmain() {
 
 #ifdef c4
 #include"libOne.h"
-#include "TAKO_C4.h"
+class FLOAT2 {
+public:
+    float x, y;
+    FLOAT2() {
+        x = 0;
+        y = 0;
+    }
+    FLOAT2(float x,float y) {
+        //thisƒ|ƒCƒ“ƒ^
+        this->x = x;
+        this->y = y;
+    }
 
+};
 void gmain() {
-    window(1920, 1080, full);
-    int takoImg = loadImage("assets\\enemy.png");
-    int num = 30;
-    TAKO_C4* takos = new TAKO_C4[num];
-    for (int i = 0; i < num; i++) {
-        takos[i].setImage(takoImg);
-        takos[i].init();
-    }
+    window(1000, 1000, full);
+
+    FLOAT2 pos(100,10);
+
+    printSize(200);
+    print(pos.x);
+    print(pos.y);
     while (notQuit) {
-        for (int i = 0; i < num; i++) {
-            takos[i].move();
-            takos[i].draw();
-        }
+
     }
-    delete[] takos;
 }
+//#include"libOne.h"
+//#include "TAKO_C4.h"
+
+//gmain() {
+    //window(1920, 1080, full);
+    // takoImg = loadImage("assets\\enemy.png");
+    //int num = 30;
+    //TAKO_C4* takos = new TAKO_C4[num];
+    //for (int i = 0; i < num; i++) {
+        //takos[i].setImage(takoImg);
+        //takos[i].init();
+    //}
+    //while (notQuit) {
+        //for (int i = 0; i < num; i++) {
+          //  takos[i].move();
+            //takos[i].draw();
+        //}
+    //}
+    //delete[] takos;
+//}
 #endif
