@@ -167,10 +167,8 @@ void gmain() {
 #include"libOne.h"
 class FLOAT2 {
 public:
-    float x, y;
-    FLOAT2() {
-        x = 0;
-        y = 0;
+    float x=0, y=0;
+    FLOAT2(){      // : ...初期化指定子
     }
     FLOAT2(float x,float y) {
         //thisポインタ
@@ -182,11 +180,14 @@ public:
 void gmain() {
     window(1000, 1000, full);
 
-    FLOAT2 pos(100,10);
+    FLOAT2 pos[2] = {
+        FLOAT2(100,10),
+        FLOAT2(200,20),
+    };
 
     printSize(200);
-    print(pos.x);
-    print(pos.y);
+    print(pos[1].x);
+    print(pos[1].y);
     while (notQuit) {
 
     }
