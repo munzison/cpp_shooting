@@ -168,26 +168,29 @@ void gmain() {
 class FLOAT2 {
 public:
     float x=0, y=0;
-    FLOAT2(){      // : ...初期化指定子
+    FLOAT2(){ 
     }
     FLOAT2(float x,float y) {
         //thisポインタ
         this->x = x;
         this->y = y;
     }
+    FLOAT2 operator+(FLOAT2& f2) {//演算子のオーバーロード
+        return FLOAT2(x + f2.x, y + f2.y);
+    }
 
 };
 void gmain() {
     window(1000, 1000, full);
 
-    FLOAT2 pos[2] = {
-        FLOAT2(100,10),
-        FLOAT2(200,20),
-    };
+    FLOAT2 pos(100, 10);
+    FLOAT2 vec(200, 20);
+    FLOAT2 new_pos;
+    new_pos = pos + vec;
 
     printSize(200);
-    print(pos[1].x);
-    print(pos[1].y);
+    print(new_pos.x);
+    print(new_pos.y);
     while (notQuit) {
 
     }
@@ -196,20 +199,20 @@ void gmain() {
 //#include "TAKO_C4.h"
 
 //gmain() {
-    //window(1920, 1080, full);
-    // takoImg = loadImage("assets\\enemy.png");
-    //int num = 30;
-    //TAKO_C4* takos = new TAKO_C4[num];
-    //for (int i = 0; i < num; i++) {
-        //takos[i].setImage(takoImg);
-        //takos[i].init();
-    //}
-    //while (notQuit) {
-        //for (int i = 0; i < num; i++) {
-          //  takos[i].move();
-            //takos[i].draw();
-        //}
-    //}
-    //delete[] takos;
+//    window(1920, 1080, full);
+//     takoImg = loadImage("assets\\enemy.png");
+//    int num = 30;
+//    TAKO_C4* takos = new TAKO_C4[num];
+//    for (int i = 0; i < num; i++) {
+//        takos[i].setImage(takoImg);
+//        takos[i].init();
+//    }
+//    while (notQuit) {
+//        for (int i = 0; i < num; i++) {
+//            takos[i].move();
+//            takos[i].draw();
+//        }
+//    }
+//    delete[] takos;
 //}
 #endif
