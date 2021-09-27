@@ -167,7 +167,7 @@ void gmain() {
 #include"libOne.h"
 class FLOAT2 {
 public:
-    float x=0, y=0;
+    float x = 0, y = 0;
     FLOAT2(){ 
     }
     FLOAT2(float x,float y) {
@@ -178,19 +178,33 @@ public:
     FLOAT2 operator+(FLOAT2& f2) {//演算子のオーバーロード
         return FLOAT2(x + f2.x, y + f2.y);
     }
-
+    FLOAT2 operator-(FLOAT2& f2) {//演算子のオーバーロード
+        return FLOAT2(x - f2.x, y - f2.y);
+    }
+    FLOAT2 operator*(float f) {
+        return FLOAT2(x * f, y * f);
+    }
+    void operator+=(const FLOAT2& f2) {
+        x += f2.x;
+        y += f2.y;
+    }
+    void normalize() {
+        float mag = sqrt(x * x + y * y);
+        x /= mag;
+        y /= mag;
+    }
 };
 void gmain() {
     window(1000, 1000, full);
 
     FLOAT2 pos(100, 10);
     FLOAT2 vec(200, 20);
-    FLOAT2 new_pos;
-    new_pos = pos + vec;
+    vec.normalize();
+    pos += vec * 5.0f;
 
     printSize(200);
-    print(new_pos.x);
-    print(new_pos.y);
+    print(pos.x);
+    print(pos.y);
     while (notQuit) {
 
     }
