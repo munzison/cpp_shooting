@@ -155,6 +155,7 @@
     <ClCompile Include="GAME.cpp" />
     <ClCompile Include="GAME_OBJECT.cpp" />
     <ClCompile Include="gmain.cpp" />
+    <ClCompile Include="SCENE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
@@ -165,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="GAME.h" />
     <ClInclude Include="GAME_OBJECT.h" />
+    <ClInclude Include="SCENE.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
